@@ -23,8 +23,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const downloadMarkdownBtn = document.getElementById('downloadMarkdown');
     const downloadTextBtn = document.getElementById('downloadText');
 
-    const iconElements = document.getElementsByClassName("icon");
-    const iconToggle = document.getElementById("icon-toggle");
+    const toggleIconsBtn = document.getElementById('toggleIconsBtn');
+    let useIcons = true;
 
     // Check if we're in an iframe
     const isInIframe = window.self !== window.top;
@@ -37,9 +37,6 @@ document.addEventListener('DOMContentLoaded', function() {
             s: formData.get('policyScope'), // s for scope
             a: formData.get('aiUsage'),     // a for ai usage
             c: formData.get('citation'),    // c for citation
-
-            // toggle icons
-            ti: Array.from(formData.getAll("toggleIcons")),
             
             // Checkboxes (arrays of values)
             u: Array.from(formData.getAll('useCases')),      // u for use cases
@@ -50,8 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
             cd: document.getElementById('customDocumentation')?.value || '',   // cd for custom documentation
             cf: document.getElementById('customCitationFormat')?.value || ''   // cf for custom citation format
         };
-        console.log({state});
-        
+
         // Convert to base64 to make it more compact
         return btoa(JSON.stringify(state));
     }
@@ -187,10 +183,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function toggleIcons() {
-        for (const el of iconElements) {
-            el.style.display = iconToggle.checked ? "unset" : "none";
-        }
+        useIcons = !useIcons;
+        updatePolicyPreview();
     }
+    toggleIconsBtn.addEventListener("click", toggleIcons);
 
     // Show/hide citation format selector based on citation selection
     function toggleCitationFormat() {
@@ -316,7 +312,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const header = `If you use AI ${context}, you must also:`;
         const requirements = selectedOptions.map(item => {
-            let iconSpan = iconToggle.checked ? `<span class="icon">${item.icon}</span> ` : "";
+            let iconSpan = useIcons ? `<span class="icon">${item.icon}</span> ` : "";
             return `${iconSpan}${item.text}`;
         }).join('\n');
 
@@ -350,7 +346,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         const header = `Approved use cases for AI tools ${context}:`;
         const requirements = selectedOptions.map(item => {
-            let iconSpan = iconToggle.checked ? `<span class="icon">${item.icon}</span> ` : "";
+            let iconSpan = useIcons ? `<span class="icon">${item.icon}</span> ` : "";
             return `${iconSpan}${item.text}`;
         }).join('\n');
 
@@ -437,7 +433,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Add header as first section with dynamic icons
             policySections.push({
                 text: header,
-                iconHTML: iconToggle.checked ? generatePolicyIcons() : "",
+                iconHTML: useIcons ? generatePolicyIcons() : "",
                 isHeader: true
             });
         }
@@ -462,7 +458,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         if (text) {
                             policySections.push({
                                 text: text,
-                                iconHTML: iconToggle.checked ?'<span class="icon" aria-hidden="true">📝</span>' : "",
+                                iconHTML: useIcons ?'<span class="icon" aria-hidden="true">📝</span>' : "",
                                 isDocumentation: true
                             });
                         }
@@ -475,7 +471,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         if (text) {
                             policySections.push({
                                 text: text,
-                                iconHTML: iconToggle.checked ? '<span class="icon" aria-hidden="true">✔️</span>' : "",
+                                iconHTML: useIcons ? '<span class="icon" aria-hidden="true">✔️</span>' : "",
                                 isDocumentation: true
                             });
                         }
@@ -490,7 +486,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         
                         policySections.push({
                             text: answer,
-                            iconHTML: (iconSpan && iconToggle.checked) ? iconSpan.outerHTML : ''
+                            iconHTML: (iconSpan && useIcons) ? iconSpan.outerHTML : ''
                         });
                     }
                 } else if (name !== 'documentation' && name !== 'useCases') {
@@ -508,7 +504,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         
                         policySections.push({
                             text: studentText,
-                            iconHTML: (iconSpan && iconToggle.checked)  ? iconSpan.outerHTML : ''
+                            iconHTML: (iconSpan && useIcons)  ? iconSpan.outerHTML : ''
                         });
                     }
                 }
@@ -537,9 +533,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 policyHTML += `
                     <div class="policy-header ${policyClass}">
-                        ${ iconToggle.checked ? "<div class='policy-icons'>" : ""}
-                        ${ iconToggle.checked ? section.iconHTML : ""}
-                        ${ iconToggle.checked ? "</div>" : ""}
+                        ${ useIcons ? "<div class='policy-icons'>" : ""}
+                        ${ useIcons ? section.iconHTML : ""}
+                        ${ useIcons ? "</div>" : ""}
                         <h2>${section.text}</h2>
                     </div>
                 `;
@@ -547,10 +543,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 const [header, ...requirements] = section.text.split('\n');
                 policyHTML += `
                     <div class="policy-section">
-                        ${ iconToggle.checked ? section.iconHTML : ""}
+                        ${ useIcons ? section.iconHTML : ""}
                         <div class="documentation-section">
                             <p class="documentation-header">${header}</p>
-                            <ul class="documentation-requirements ${ iconToggle.checked? 'policy-list' : ''}">
+                            <ul class="documentation-requirements ${ useIcons? 'policy-list' : ''}">
                                 ${requirements.filter(r => r.trim()).map(r => `<li>${r}</li>`).join('')}
                             </ul>
                         </div>
@@ -559,7 +555,7 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 policyHTML += `
                     <div class="policy-section">
-                        ${ iconToggle.checked ? section.iconHTML : ""}
+                        ${ useIcons ? section.iconHTML : ""}
                         <p>${section.text}</p>
                     </div>
                 `;
@@ -976,7 +972,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <span class="icon" aria-hidden="true">${icon}</span>
                     <div class="documentation-section">
                         <p class="documentation-header">${header}</p>
-                        <ul class="documentation-requirements ${ iconToggle.checked? 'policy-list' : ''}">
+                        <ul class="documentation-requirements ${ useIcons? 'policy-list' : ''}">
                             ${requirements}
                         </ul>
                     </div>

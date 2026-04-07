@@ -19,13 +19,14 @@
 
             <!-- Policy Preview -->
             <div class="preview-column main-column" role="region" aria-label="Policy Preview">
+                <h1>Policy preview</h1>
                 <div class="preview-container">
-                    <h2>Policy Preview</h2>
                     <div id="previewContainer" class="policy-statement" role="region" aria-live="polite">
                         <!-- Policy statement will be generated here -->
                     </div>
                     <div class="action-buttons">
-                        <button type="button" id="startOverBtn" class="btn btn-secondary" aria-label="Start over and clear all selections">Start Over</button>
+                        <button type="button" id="startOverBtn" class="btn" aria-label="Start over and clear all selections">Start Over</button>
+                        <button type="button" id="toggleIconsBtn" class="btn" aria-label="Remove icons from text">Toggle icons</button>
                         <button type="button" id="downloadRTF" class="btn" aria-label="Download policy in multiple formats">Download</button>
                         <button type="button" id="copyBtn" class="btn" aria-label="Copy policy text to clipboard">Copy Text</button>
                         <button type="button" id="shareBtn" class="btn" aria-label="Share policy configuration">Share</button>
@@ -35,10 +36,9 @@
                 <footer class="app-footer">
                     <div class="footer-content">
                         <div class="acknowledgement">
-                            <p>The AI Policy Generator was created by Ed Beck and Tera Doty-Blance and has been shared under a <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">Creative Commons Attribution 4.0 International License <i class="fab fa-creative-commons" aria-hidden="true"></i> <i class="fab fa-creative-commons-by" aria-hidden="true"></i></a>.</p>
-                            <p>Source code is available on <a href="https://github.com/beckej13820/edu-apps" target="_blank" rel="noopener noreferrer">GitHub <i class="fab fa-github" aria-hidden="true"></i></a></p>
+                            <p>Forked from <a href="https://github.com/beckej13820/edu-apps/tree/main/docs/ai-policy-generator" target="_blank">The AI Policy Generator</a>, created by Ed Beck and Tera Doty-Blance and shared under a <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">Creative Commons Attribution 4.0 International License <i class="fab fa-creative-commons" aria-hidden="true"></i> <i class="fab fa-creative-commons-by" aria-hidden="true"></i></a>.</p>
                         </div>
-                        <button id="embedBtn" class="btn btn-secondary" aria-label="Open embed code modal">Embed</button>
+                        <!-- <button id="embedBtn" class="btn btn-secondary" aria-label="Open embed code modal">Embed</button> -->
                     </div>
                 </footer>
 
@@ -46,20 +46,8 @@
 
             <!-- Questions -->
             <div class="questions-column main-column" role="region" aria-label="Policy Configuration">
+                <h1>Policy options</h1>
                 <form id="policyForm" class="policy-form" aria-label="AI Policy Configuration Form">
-
-                    <!-- Toggle Icons option -->
-                    <div>
-                        <div class="options-grid" role="group" aria-labelledby="toggle-icons-heading">
-                            <label class="option-card checkbox-card">
-                                <input type="checkbox" id="icon-toggle" name="toggleIcons" value="toggle-icons" aria-describedby="toggle-icons-desc" checked>
-                                <div class="card-content">
-                                    <span aria-hidden="true" class="icon">🔵</span>
-                                    <span class="details">Toggle icons</span>
-                                </div>
-                            </label>
-                        </div>
-                    </div>                    
 
                     <!-- Question 1: Policy Scope -->
                     <div class="question-container" id="question1" data-question="policyScope" role="group" aria-labelledby="scope-heading">
@@ -385,7 +373,6 @@
                 </form>
             </div>
         </div>
-
         
     </main>
 
