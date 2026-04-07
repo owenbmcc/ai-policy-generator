@@ -752,28 +752,28 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Embed button (show modal)
-    embedBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        try {
-            // Generate the embed code with current domain and policy state
-            const currentDomain = window.location.origin;
-            const currentPath = window.location.pathname;
-            const encodedState = encodeFormState();
+    // embedBtn.addEventListener('click', function(e) {
+    //     e.preventDefault();
+    //     e.stopPropagation();
+    //     try {
+    //         // Generate the embed code with current domain and policy state
+    //         const currentDomain = window.location.origin;
+    //         const currentPath = window.location.pathname;
+    //         const encodedState = encodeFormState();
             
-            // Create embed code that works for both WordPress and Brightspace
-            const iframeHTML = `<iframe src="${currentDomain}${currentPath}?policy=${encodedState}" width="100%" height="1000px" frameborder="0" style="border:none;"></iframe>`;
+    //         // Create embed code that works for both WordPress and Brightspace
+    //         const iframeHTML = `<iframe src="${currentDomain}${currentPath}?policy=${encodedState}" width="100%" height="1000px" frameborder="0" style="border:none;"></iframe>`;
             
-            // Set the embed code in the modal
-            embedCode.textContent = iframeHTML;
+    //         // Set the embed code in the modal
+    //         embedCode.textContent = iframeHTML;
 
-            // Show the modal
-            embedModal.classList.remove('hidden');
-            document.body.classList.add('modal-open');
-        } catch (error) {
-            console.error('Failed to open embed modal:', error);
-        }
-    });
+    //         // Show the modal
+    //         embedModal.classList.remove('hidden');
+    //         document.body.classList.add('modal-open');
+    //     } catch (error) {
+    //         console.error('Failed to open embed modal:', error);
+    //     }
+    // });
 
     // Close buttons for both modals
     const closeButtons = document.querySelectorAll('.close-modal');
@@ -794,12 +794,12 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Close modals when clicking outside
-    embedModal.addEventListener('click', function(e) {
-        if (e.target === embedModal) {
-            embedModal.classList.add('hidden');
-            document.body.classList.remove('modal-open');
-        }
-    });
+    // embedModal.addEventListener('click', function(e) {
+    //     if (e.target === embedModal) {
+    //         embedModal.classList.add('hidden');
+    //         document.body.classList.remove('modal-open');
+    //     }
+    // });
 
     downloadModal.addEventListener('click', function(e) {
         if (e.target === downloadModal) {
