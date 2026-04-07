@@ -64,7 +64,7 @@ h2 {
 .form-container {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: var(--column-gap);
+/*    gap: var(--column-gap);*/
     align-items: start;
     height: 100%;
 }
@@ -72,7 +72,8 @@ h2 {
 /* Questions Column */
 .questions-column {
     background-color: white;
-    padding: 1.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
 /*    border-radius: var(--border-radius);*/
 /*    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);*/
     width: 100%;
@@ -81,7 +82,8 @@ h2 {
 /* Preview Column */
 .preview-column {
     flex: 1;
-    padding: 1rem;
+    padding-right: 1rem;
+/*    padding: 1rem;*/
 /*    background-color: #f8f9fa;*/
 /*    border-left: 1px solid #dee2e6;*/
     overflow-y: auto;

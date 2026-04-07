@@ -471,7 +471,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         if (text) {
                             policySections.push({
                                 text: text,
-                                iconHTML: useIcons ? '<span class="icon" aria-hidden="true">✔️</span>' : "",
+                                iconHTML: useIcons ? '<span class="icon" aria-hidden="true">✔︎</span>' : "",
                                 isDocumentation: true
                             });
                         }
