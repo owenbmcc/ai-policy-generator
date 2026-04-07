@@ -23,6 +23,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const downloadMarkdownBtn = document.getElementById('downloadMarkdown');
     const downloadTextBtn = document.getElementById('downloadText');
 
+    const iconElements = document.getElementsByClassName("icon");
+
     // Check if we're in an iframe
     const isInIframe = window.self !== window.top;
 
@@ -179,12 +181,18 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    function toggleIcons() {
+        console.log(iconElements);
+    }
+
     // Show/hide citation format selector based on citation selection
     function toggleCitationFormat() {
+        console.log("toggle citation")
         const selectedOption = document.querySelector('input[name="citation"]:checked');
         if (selectedOption && selectedOption.value === 'formal') {
             citationFormatContainer.classList.remove('hidden');
         } else {
+            console.log(citationFormatContainer)
             citationFormatContainer.classList.add('hidden');
         }
         updateIframeHeight();

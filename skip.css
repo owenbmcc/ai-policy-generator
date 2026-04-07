@@ -1,0 +1,57 @@
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #000;
+    color: white;
+    padding: 8px;
+    z-index: 100;
+    transition: top 0.2s ease-in-out;
+}
+.skip-link:focus {
+    top: 0;
+}
+
+/* Focus styles for all interactive elements */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus,
+select:focus,
+[role="button"]:focus {
+    outline: 3px solid #007bff;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.25);
+}
+
+/* Remove default focus outline and add custom one */
+*:focus {
+    outline: none;
+}
+
+/* Ensure focus is visible even when using mouse */
+*:focus-visible {
+    outline: 3px solid #007bff;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.25);
+}
+
+/* Custom focus styles for radio and checkbox inputs */
+input[type="radio"]:focus,
+input[type="checkbox"]:focus {
+    outline: 3px solid #007bff;
+    outline-offset: 2px;
+}
+
+/* Ensure focus is visible on the option cards */
+.option-card:focus-within {
+    outline: 3px solid #007bff;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.25);
+}
+
+.icon {
+/*    font-size: 1.5em;*/
+    vertical-align: middle;
+/*    margin-right: 0.5em;*/
+}
