@@ -191,6 +191,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Show/hide citation format selector based on citation selection
     function toggleCitationFormat() {
         const selectedOption = document.querySelector('input[name="citation"]:checked');
+        console.log(selectedOption);
         if (selectedOption && selectedOption.value === 'formal') {
             citationFormatContainer.classList.remove('hidden');
         } else {

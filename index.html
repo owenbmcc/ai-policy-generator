@@ -45,7 +45,7 @@
                 <footer class="app-footer">
                     <div class="footer-content">
                         <div class="acknowledgement">
-                            <p>Forked from <a href="https://github.com/beckej13820/edu-apps/tree/main/docs/ai-policy-generator" target="_blank">The AI Policy Generator</a>, created by Ed Beck and Tera Doty-Blance and shared under a <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">Creative Commons Attribution 4.0 International License <i class="fab fa-creative-commons" aria-hidden="true"></i> <i class="fab fa-creative-commons-by" aria-hidden="true"></i></a>.</p>
+                            <p>Forked from <a href="https://ai.sunycreate.cloud/ai-policy-generator/" target="_blank">The AI Policy Generator</a>, created by Ed Beck and Tera Doty-Blance and shared under a <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">Creative Commons Attribution 4.0 International License <i class="fab fa-creative-commons" aria-hidden="true"></i> <i class="fab fa-creative-commons-by" aria-hidden="true"></i></a>.</p>
                             <p>View <a href="https://github.com/owenbmcc/ai-policy-generator" target="_blank">source on GitHub</a>.</p>
                         </div>
 
@@ -55,37 +55,27 @@
 
             </div>
 
-            <!-- Questions -->
+            <!-- Options -->
             <div class="questions-column main-column" role="region" aria-label="Policy Configuration">
                 <h1>Policy options</h1>
                 <form id="policyForm" class="policy-form" aria-label="AI Policy Configuration Form">
 
                     <!-- Question 1: Policy Scope -->
                     <div class="question-container" id="question1" data-question="policyScope" role="group" aria-labelledby="scope-heading">
-                        <h2 id="scope-heading">Is this AI Policy for your entire course or for a specific assignment?</h2>
+                        <h2 id="scope-heading">Is this AI Policy for your entire course or for a specific assignment or activity?</h2>
                         <div class="options-grid" role="radiogroup" aria-labelledby="scope-heading">
                             <label class="option-card">
                                 <input type="radio" name="policyScope" value="course" required aria-describedby="course-desc">
                                 <div class="card-content">
-                                    <details>
-                                        <summary>
-                                            <span aria-hidden="true" class="icon">📚</span>
-                                            <span class="details">Entire Course</span>
-                                        </summary>
-                                        <p id="course-desc">This policy will apply to all assignments and activities throughout the course.</p>
-                                    </details>
+                                    <span aria-hidden="true" class="icon">📚</span>
+                                    <span class="details">Entire Course</span>
                                 </div>
                             </label>
                             <label class="option-card">
                                 <input type="radio" name="policyScope" value="assignment" aria-describedby="assignment-desc">
                                 <div class="card-content">
-                                    <details>
-                                        <summary>
-                                            <span aria-hidden="true" class="icon">🗂️</span>
-                                            <span class="details">Specific Assignment</span>
-                                        </summary>
-                                        <p id="assignment-desc">This policy will apply only to a specific assignment or activity.</p>
-                                    </details>
+                                    <span aria-hidden="true" class="icon">🗂️</span>
+                                    <span class="details">Specific Assignment</span>
                                 </div>
                             </label>
                         </div>
@@ -99,14 +89,10 @@
                             <label class="option-card">
                                 <input type="radio" name="aiUsage" value="prohibited" required aria-describedby="prohibited-desc">
                                 <div class="card-content">
-                                    <details>
-                                        <summary>
-                                            <span aria-hidden="true" class="icon">🚫</span>
-                                            <span class="details">Prohibited</span>
-                                        </summary>
-                                        <p id="prohibited-desc" class="course-text">You may not use AI tools for any assignments or activities in this course.</p>
-                                        <p class="assignment-text hidden">You may not use AI tools for this assignment.</p>
-                                    </details>
+                                    <span aria-hidden="true" class="icon">🚫</span>
+                                    <span class="details">Prohibited</span>
+                                    <p id="prohibited-desc" class="course-text hidden">You may not use AI tools for any assignments or activities in this course.</p>
+                                    <p class="assignment-text hidden">You may not use AI tools for this assignment.</p>
                                 </div>
                             </label>
                             <label class="option-card">
