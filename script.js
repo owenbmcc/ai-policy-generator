@@ -5,9 +5,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const copyBtn = document.getElementById('copyBtn');
     const shareBtn = document.getElementById('shareBtn');
     const downloadRTFBtn = document.getElementById('downloadRTF');
-    const citationFormatContainer = document.getElementById('citationFormatContainer');
+
+    // doesn't exist?
+    // const citationFormatContainer = document.getElementById('citationFormatContainer');
+    // const otherCitationFormat = document.getElementById('otherCitationFormat');
+    
     const citationFormat = document.getElementById('citationFormat');
-    const otherCitationFormat = document.getElementById('otherCitationFormat');
     const customCitationFormat = document.getElementById('customCitationFormat');
     const otherDocumentationContainer = document.getElementById('otherDocumentationContainer');
 
@@ -191,11 +194,16 @@ document.addEventListener('DOMContentLoaded', function() {
     // Show/hide citation format selector based on citation selection
     function toggleCitationFormat() {
         const selectedOption = document.querySelector('input[name="citation"]:checked');
-        console.log(selectedOption);
+        
+
+        // container does not exist?
+        // console.log('toggle citation format', selectedOption);
+        // console.log('citation format container', citationFormatContainer);
+
         if (selectedOption && selectedOption.value === 'formal') {
-            citationFormatContainer.classList.remove('hidden');
+            // citationFormatContainer.classList.remove('hidden');
         } else {
-            citationFormatContainer.classList.add('hidden');
+            // citationFormatContainer.classList.add('hidden');
         }
         updateIframeHeight();
     }
@@ -203,9 +211,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Show/hide other citation format input
     function toggleOtherCitationFormat() {
         if (citationFormat.value === 'other') {
-            otherCitationFormat.classList.remove('hidden');
+            // otherCitationFormat.classList.remove('hidden');
         } else {
-            otherCitationFormat.classList.add('hidden');
+            // otherCitationFormat.classList.add('hidden');
         }
         updateIframeHeight();
     }
@@ -632,8 +640,8 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Reset the form and all inputs
         form.reset();
-        citationFormatContainer.classList.add('hidden');
-        otherCitationFormat.classList.add('hidden');
+        //  citationFormatContainer.classList.add('hidden'); // does not exist?
+        // otherCitationFormat.classList.add('hidden');
         otherDocumentationContainer.classList.add('hidden');
         document.getElementById('otherUseCasesContainer').classList.add('hidden');
         
@@ -643,7 +651,9 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('question5').classList.remove('hidden');
         
         // Reset custom inputs
-        document.getElementById('customCitationFormat').value = '';
+        if (document.getElementById('customCitationFormat')) {
+            document.getElementById('customCitationFormat').value = '';
+        }
         document.getElementById('customDocumentation').value = '';
         document.getElementById('customUseCases').value = '';
         

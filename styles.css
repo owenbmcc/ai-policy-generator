@@ -262,7 +262,9 @@ h2 {
 
 
 /* Accessibility */
-.hidden {
+.hidden,
+p.course-text,
+p.assignment-text {
     display: none !important;
 }
 
